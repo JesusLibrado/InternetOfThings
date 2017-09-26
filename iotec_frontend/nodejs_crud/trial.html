@@ -27,7 +27,7 @@
 			$.ajax({
 				type:"GET",
 				url: "http://localhost:8126/api/examples",
-				dataType: "json".
+				dataType: "json",
 				success: function(response){
 					response.forEach(function(ex){
 						var render = '<p>'+ex.type+', '+ex.msg+'</p>';
