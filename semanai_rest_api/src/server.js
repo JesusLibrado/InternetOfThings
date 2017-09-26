@@ -49,7 +49,7 @@ router.use(function(req, res, next) {
 // test route
 
 router.get('/', function(req, res) {
- res.json({ message: 'yahoo!! welcome to our api !' });
+ res.json({ message: 'Welcome to our api !' });
 });
 
 // more routes for our API will happen here
@@ -59,13 +59,16 @@ router.route('/devices')
   // http://localhost:8081/api/devices
  .post(function (req, res) {
  	var device = new Device();
- 	device.name = req.body.name;
+ 	device.name = req.body.nombre;
+  device.lastname = req.body.apellido;
+  device.age = req.body.edad;
+  
  	// save the bear and check for errors
  	device.save(function (err) {
  		// body...
  		if (err)
  			res.send(err);
- 		res.json({ message: 'device created !'});
+ 		res.json({ message: 'Device created !'});
  	});
 
  	// body...
@@ -112,7 +115,9 @@ router.route('/devices/:device_id')
  			res.send(err);
 
  		// update the bears info
- 		device.name = req.body.name;
+ 		device.name = req.body.nombre;
+    device.lastname = req.body.apellido;
+    device.age = req.body.edad;
 
  		// save the bear
 
