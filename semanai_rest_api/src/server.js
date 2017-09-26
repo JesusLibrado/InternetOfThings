@@ -6,8 +6,6 @@ var mongoose = require('mongoose'); // driver de Mongo
 mongoose.connect('mongodb://35.185.213.109:27017/iotec-jesuslibrado');
 var Device = require('./app/models/device');
 
-// call the packages
-
 
 var express = require('express');
 var cors = require('cors');
@@ -31,8 +29,7 @@ var router = express.Router();
 
 // middleware to use for all requests
 router.use(function(req, res, next) {
-	// do logging
-	console.log('something is happenning..');
+	console.log('Router in use...');
   
 
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -54,37 +51,30 @@ router.get('/', function(req, res) {
 
 // more routes for our API will happen here
 router.route('/devices')
- 
-  // create a bear accessed at POST
+
   // http://localhost:8081/api/devices
  .post(function (req, res) {
- 	var device = new Device();
- 	device.name = req.body.nombre;
-  device.lastname = req.body.apellido;
-  device.age = req.body.edad;
-  
- 	// save the bear and check for errors
- 	device.save(function (err) {
- 		// body...
- 		if (err)
- 			res.send(err);
- 		res.json({ message: 'Device created !'});
- 	});
 
- 	// body...
+   	var device = new Device();
+   	device.name = req.body.nombre;
+    device.lastname = req.body.apellido;
+    device.age = req.body.edad;
+
+   	device.save(function (err) {
+   		if (err)
+   			res.send(err);
+   		res.json({ message: 'Device created !'});
+   	});
  })
-  
- // get all the devices (accessed at 
+
  // http://localhost:8081/api/devices)
  .get(function (req, res) {
 
- 	// body...
- 	Device.find(function(err, devices) 
- 	{
- 		if (err)
- 			res.send(err);
- 		res.json(devices);
- 	});
+   	Device.find(function(err, devices){
+   		if (err)
+   			res.send(err);
+   		res.json(devices);
+   	});
  });
 
 // on routes that end in /devices/:device_id
@@ -93,53 +83,45 @@ router.route('/devices/:device_id')
  // accessed at GET 
  // http://localhost:8081/api/devices/:device_id
 
- .get(function(req, res) {
- 	// body...
- 	Device.findById(req.params.device_id, function(err, device)
- 	{
- 		if (err)
- 			res.send(err);
- 		res.json(device);
+ .get(function(req, res){
+   	Device.findById(req.params.device_id, function(err, device){
+   		if (err)
+   			res.send(err);
+   		res.json(device);
 
- 	});
+   	});
   })
 
- // update the bear with this id
- // accessed at PUT
  // http://localhost:8126/api/bears/:bear_id
 
  .put(function (req, res) {
- 	// use our device model to find the device we want
- 	Device.findById(req.params.device_id, function(err, device) {
- 		if (err)
- 			res.send(err);
 
- 		// update the bears info
- 		device.name = req.body.nombre;
-    device.lastname = req.body.apellido;
-    device.age = req.body.edad;
+   	Device.findById(req.params.device_id, function(err, device){
+   		if (err)
+   			res.send(err);
 
- 		// save the bear
+   		device.name = req.body.nombre;
+      device.lastname = req.body.apellido;
+      device.age = req.body.edad;
 
- 		device.save(function (err) {
- 			if (err)
- 				res.send(err);
- 			res.json({message: 'Device updated !'});
- 		});
- 	});
+   		device.save(function (err) {
+   			if (err)
+   				res.send(err);
+   			res.json({message: 'Device updated !'});
+   		});
+   	});
   })
 
- // delete the device with this id 
- // accessed at DELETE
  // http://localhost:8081/api/devices/:device_id
  .delete(function (req, res) {
-   Device.remove({
-   	_id : req.params.device_id
-   }, function (err, device) {
-   	if (err)
-   		res.send(err);
-   	res.json({message: 'Device deleted !'});
-   });
+
+     Device.remove({
+     	_id : req.params.device_id
+     }, function (err, device) {
+     	if (err)
+     		res.send(err);
+     	res.json({message: 'Device deleted !'});
+     });
 
  });
 

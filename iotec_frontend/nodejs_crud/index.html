@@ -40,7 +40,7 @@
 
     	 jQuery.ajax({
              type: "POST",
-             url: "http://localhost:8126/api/devices",
+             url: "http://35.185.213.109:8126/api/devices",
              headers: {
              'Content-Type':'application/x-www-form-urlencoded'
              },
@@ -52,14 +52,12 @@
              contentType: "application/json; charset=utf-8",
              dataType: "json",
              success: function (response) {
-                  // do something
+
                   showMsg(response.message);
                   getBearList();
              },
-         
-             error: function (error) {            
-                  // error handler
-                  alert("error :" + error.message)
+              error: function (error) {
+                  alert("error :" + error.message); 
              }
 
          });
@@ -90,25 +88,24 @@
 
        jQuery.ajax({
              type: "PUT",
-             url: "http://localhost:8126/api/devices/" + bearId,
+             url: "http://35.185.213.109:8126/api/devices/" + bearId,
              headers: {
              'Content-Type':'application/x-www-form-urlencoded'
              },
              data: { 
-              "name" : myBear.name,
+              "nombre" : myBear.name,
               "apellido": myBear.lastname,
               "edad": myBear.age
              },
              contentType: "application/json; charset=utf-8",
              dataType: "json",
              success: function (response) {
-                  // do something
-                  showMsg("Updated : " + response.message);
+
+                  showMsg(response.message);
                   getBearList();
              },
          
-             error: function (error) {            
-                  // error handler
+             error: function (error) {
                   alert("error :" + error.message)
              }
 
@@ -131,7 +128,7 @@
 
        jQuery.ajax({
              type: "DELETE",
-             url: "http://localhost:8126/api/devices/" + bearId,
+             url: "http://35.185.213.109:8126/api/devices/" + bearId,
              contentType: "application/json; charset=utf-8",
              dataType: "json",
              success: function (response) {
@@ -168,18 +165,17 @@
 
        jQuery.ajax({
              type: "GET",
-             url: "http://localhost:8126/api/devices/" + bearId,
+             url: "http://35.185.213.109:8126/api/devices/" + bearId,
              contentType: "application/json; charset=utf-8",
              dataType: "json",
              success: function (response) {
-                  // do something
+
                   $("#nombre").val(response.name);
                   $("#apellido").val(response.lastname);
                   $("#edad").val(response.age);
              },
          
-             error: function (error) {            
-                  // error handler
+             error: function (error) {
                   alert("error :" + error.message)
              }
 
@@ -199,7 +195,7 @@
     {
        jQuery.ajax({
              type: "GET",
-             url: "http://localhost:8126/api/devices",
+             url: "http://35.185.213.109:8126/api/devices",
              contentType: "application/json; charset=utf-8",
              dataType: "json",
              success: function (response) {
@@ -228,8 +224,7 @@
                  
              },
          
-             error: function (error) {            
-                  // error handler
+             error: function (error) {
                   alert("error :" + error.message)
              }
 
@@ -261,9 +256,9 @@
 
   <h1>Bears CRUD</h1>
 
-  <input type="text" id="nombre" placeholder="Name" value="Pedro"/> <br>
-  <input type="text" id="apellido" placeholder="Last name" value="Picapiedra"/> <br>
-  <input type="text" id="edad" placeholder="Edad" value="45"/> <br>
+  <input type="text" id="nombre" placeholder="Name"/> <br>
+  <input type="text" id="apellido" placeholder="Last name" /> <br>
+  <input type="text" id="edad" placeholder="Edad" /> <br>
 
   <button onclick="addBearDemo()"> POST (new) </button> 
   <br>
