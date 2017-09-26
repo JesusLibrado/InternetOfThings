@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Trial</title>
+</head>
+<body>
+
+	<div>
+		<input type="text" id="type" placeholder="Type">
+		<input type="text" id="msg" placeholder="Message">
+		<button id="btnEnviar">Enviar</button>
+	</div>
+
+	<button onclick="getData()">Get</button>
+
+	<div class="data">
+		
+	</div>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		var type = $('#type').val();
+		var msg = $('#msg').val();
+
+		function getData() {
+			$.ajax({
+				type:"GET",
+				url: "http://localhost:8126/api/examples",
+				dataType: "json".
+				success: function(response){
+					response.forEach(function(ex){
+						var render = '<p>'+ex.type+', '+ex.msg+'</p>';
+						$('.data').append(render);
+					});
+				},
+				error: function(response){
+					alert(response);
+				}
+			});
+		}
+	</script>
+</body>
+</html>
