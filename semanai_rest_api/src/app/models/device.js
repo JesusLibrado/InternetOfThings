@@ -5,8 +5,8 @@ var Schema = mongoose.Schema;
 
 var DeviceSchema = new Schema({
 	name : String,
-	lastname: String,
-	age: String
+	code: String,
+	description: String
 });
 
 module.exports = mongoose.model('Device', DeviceSchema);

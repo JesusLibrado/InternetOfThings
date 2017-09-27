@@ -57,8 +57,8 @@ router.route('/devices')
 
    	var device = new Device();
    	device.name = req.body.nombre;
-    device.lastname = req.body.apellido;
-    device.age = req.body.edad;
+    device.code = req.body.code;
+    device.description = req.body.description;
 
    	device.save(function (err) {
    		if (err)
@@ -101,8 +101,8 @@ router.route('/devices/:device_id')
    			res.send(err);
 
    		device.name = req.body.nombre;
-      device.lastname = req.body.apellido;
-      device.age = req.body.edad;
+      device.code = req.body.code;
+      device.description = req.body.description;
 
    		device.save(function (err) {
    			if (err)
