@@ -4,7 +4,7 @@
   <meta charset="utf-8">
 
  <title>
-   login demo
+   Login
  </title>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -22,12 +22,6 @@ function loginDemo()
 {
   try
   {
-	//alert("testing...")
-	 //var myData = new LoginObject(
-   //  $("#email").val(), 
-   //  $("#passwd").val());
-	
-   //alert(myData.toJsonString());
 
 	 jQuery.ajax({
          type: "POST",
@@ -49,7 +43,7 @@ function loginDemo()
 
               sessionStorage.token = response.token;
               alert ("token generado: " + sessionStorage.token);
-              window.location = "admin.html";
+              window.location = "/admin";
 
          },
      
