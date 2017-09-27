@@ -1,0 +1,71 @@
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module '/server.js'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.runMain (module.js:604:10)
+    at run (bootstrap_node.js:389:7)
+    at startup (bootstrap_node.js:149:9)
+    at bootstrap_node.js:504:3
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module '/home/jesuslibrado/iotec_labs/iotec_frontend/nodejs_crud/iotec_labs/iotec_frontend/nodejsc_crud/serer.js'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.runMain (module.js:604:10)
+    at run (bootstrap_node.js:389:7)
+    at startup (bootstrap_node.js:149:9)
+    at bootstrap_node.js:504:3
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module '/home/jesuslibrado/iotec_labs/iotec_frontend/nodejs_crud/iotec_labs/iotec_frontend/nodejsc_crud/server.js'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.runMain (module.js:604:10)
+    at run (bootstrap_node.js:389:7)
+    at startup (bootstrap_node.js:149:9)
+    at bootstrap_node.js:504:3
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module '/home/jesuslibrado/iotec_labs/iotec_frontend/nodejs_crud/iotec_labs/iotec_frontend/server.js'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.runMain (module.js:604:10)
+    at run (bootstrap_node.js:389:7)
+    at startup (bootstrap_node.js:149:9)
+    at bootstrap_node.js:504:3
+module.js:471
+    throw err;
+    ^
+
+Error: Cannot find module '/home/jesuslibrado/iotec_labs/iotec_frontend/nodejs_crud/iotec_frontend/server.js'
+    at Function.Module._resolveFilename (module.js:469:15)
+    at Function.Module._load (module.js:417:25)
+    at Module.runMain (module.js:604:10)
+    at run (bootstrap_node.js:389:7)
+    at startup (bootstrap_node.js:149:9)
+    at bootstrap_node.js:504:3
+Running on port 8125
+events.js:160
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: listen EADDRINUSE :::8125
+    at Object.exports._errnoException (util.js:1020:11)
+    at exports._exceptionWithHostPort (util.js:1043:20)
+    at Server._listen2 (net.js:1258:14)
+    at listen (net.js:1294:10)
+    at Server.listen (net.js:1390:5)
+    at EventEmitter.listen (/home/jesuslibrado/iotec_labs/iotec_frontend/nodejs_crud/node_modules/express/lib/application.js:618:24)
+    at Object.<anonymous> (/home/jesuslibrado/iotec_labs/iotec_frontend/nodejs_crud/server.js:23:5)
+    at Module._compile (module.js:570:32)
+    at Object.Module._extensions..js (module.js:579:10)
+    at Module.load (module.js:487:32)
