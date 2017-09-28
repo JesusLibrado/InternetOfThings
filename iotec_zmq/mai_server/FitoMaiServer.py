@@ -40,6 +40,11 @@ while True:
      re = "inserted ok"
  
      socket.send(re)
+     
+     image_name = pars['code_device']+'.jpg'
+     img_result = open(image_name, 'w')
+     img_result.write(img_recv)
+
 
     else:
      img_recv = (message)
@@ -68,7 +73,3 @@ while True:
 
      re = "image received ok..."
      socket.send(re)
-
-    image_name = pars['code_device']+'.jpg'
-    img_result = open(image_name, 'w')
-    img_result.write(img_recv)
