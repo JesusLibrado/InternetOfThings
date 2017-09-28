@@ -59,6 +59,8 @@ router.route('/devices')
    	device.name = req.body.nombre;
     device.code = req.body.code;
     device.description = req.body.description;
+    device.location = req.body.location;
+    device.date = Date();
 
    	device.save(function (err) {
    		if (err)
@@ -103,6 +105,8 @@ router.route('/devices/:device_id')
    		device.name = req.body.nombre;
       device.code = req.body.code;
       device.description = req.body.description;
+      device.location = req.body.location;
+      device.date = Date();
 
    		device.save(function (err) {
    			if (err)

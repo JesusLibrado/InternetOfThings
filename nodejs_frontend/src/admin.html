@@ -18,10 +18,11 @@
 
   <script>
 
-  function BearObject(myName, myCode, myDescription) {
+  function BearObject(myName, myCode, myDescription, myLoc) {
       this.name = myName;
       this.code = myCode;
       this.description = myDescription;
+      this.location = myLoc;
       this.toJsonString = function () { return JSON.stringify(this); };
   };
 
@@ -34,13 +35,14 @@
          $("#nombre").val(),
          $("#code").val(),
          $("#description").val(),
+         $("#location").val()
       );
     
       showMsg(myBear.toJsonString());
 
        jQuery.ajax({
              type: "POST",
-             url: "http://35.185.213.109:8126/api/devices",
+             url: "http://localhost:8126/api/devices",
              headers: {
              'Content-Type':'application/x-www-form-urlencoded'
              },
@@ -48,7 +50,8 @@
               "token": sessionStorage.token,
               "nombre" : myBear.name,
               "code": myBear.code,
-              "description": myBear.description
+              "description": myBear.description,
+              "location": myBear.location
              },
              contentType: "application/json; charset=utf-8",
              dataType: "json",
@@ -83,13 +86,14 @@
          $("#nombre").val(),
          $("#code").val(),
          $("#description").val(),
+         $("#location").val()
       );
     
       showMsg(bearId);
 
        jQuery.ajax({
              type: "PUT",
-             url: "http://35.185.213.109:8126/api/devices/" + bearId,
+             url: "http://localhost:8126/api/devices/" + bearId,
              headers: {
              'Content-Type':'application/x-www-form-urlencoded'
              },
@@ -97,7 +101,8 @@
               "token": sessionStorage.token,
               "nombre" : myBear.name,
               "code": myBear.code,
-              "description": myBear.description
+              "description": myBear.description,
+              "location": myBear.location
              },
              contentType: "application/json; charset=utf-8",
              dataType: "json",
@@ -130,7 +135,7 @@
 
        jQuery.ajax({
              type: "DELETE",
-             url: "http://35.185.213.109:8126/api/devices/" + bearId,
+             url: "http://localhost:8126/api/devices/" + bearId,
              contentType: "application/json; charset=utf-8",
              dataType: "json",
              success: function (response) {
@@ -166,7 +171,7 @@
 
        jQuery.ajax({
              type: "GET",
-             url: "http://35.185.213.109:8126/api/devices/" + bearId,
+             url: "http://localhost:8126/api/devices/" + bearId,
              contentType: "application/json; charset=utf-8",
              dataType: "json",
              success: function (response) {
@@ -174,6 +179,8 @@
                   $("#nombre").val(response.name);
                   $("#code").val(response.code);
                   $("#description").val(response.description);
+                  $("#location").val(response.location);
+
              },
          
              error: function (error) {
@@ -196,7 +203,7 @@
     {
        jQuery.ajax({
              type: "GET",
-             url: "http://35.185.213.109:8126/api/devices",
+             url: "http://localhost:8126/api/devices",
              contentType: "application/json; charset=utf-8",
              dataType: "json",
              success: function (response) {
@@ -215,7 +222,9 @@
                     "" + tweet.code + "" +
                     " | " +
                     "" + tweet.description + "" +
-                    " | " + 
+                    " | " +
+                    "" + tweet.location + "" +
+                    " | " +
                     "<button onclick=\"deleteBearDemo('" + tweet._id + "')\"> DELETE </button> " +
                          "</div>" 
                      $("#divBears").append(nombre);
@@ -260,6 +269,7 @@
   <input type="text" id="nombre" placeholder="Name"/> <br>
   <input type="text" id="code" placeholder="Code" /> <br>
   <input type="text" id="description" placeholder="Description" /> <br>
+  <input type="text" id="location" placeholder="Location" /> <br>
 
   <button onclick="addBearDemo()"> POST (new) </button> 
   <br>
