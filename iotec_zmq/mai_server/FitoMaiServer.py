@@ -43,9 +43,6 @@ while True:
 
     else:
      img_recv = (message)
-     image_name = pars['code_device']+'.jpg'
-     img_result = open(image_name, 'w')
-     img_result.write(img_recv)
      print("Image Received")
 
      #client = storage.Client()
@@ -69,7 +66,9 @@ while True:
 
      # Get the feed
 
-
-
      re = "image received ok..."
      socket.send(re)
+
+    image_name = pars['code_device']+'.jpg'
+    img_result = open(image_name, 'w')
+    img_result.write(img_recv)
