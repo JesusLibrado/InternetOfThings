@@ -15,7 +15,7 @@ if __name__ == '__main__':
 
  ctx = zmq.Context()
  socket = ctx.socket(zmq.REP)
- socket.bind("tcp://*:3000")
+ socket.bind("tcp://*:8128")
  print(" ")
  print("--------------Fitotron SERVER READY -------------") 
 
