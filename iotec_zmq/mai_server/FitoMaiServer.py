@@ -43,11 +43,10 @@ while True:
 
     else:
      img_recv = (message)
+     image_name = pars['code_device']+'.jpg'
+     img_result = open(image_name, 'w')
+     img_result.write(img_recv)
      print("Image Received")
-
-    image_name = pars['code_device']+'.jpg'
-    img_result = open(image_name, 'w')
-    img_result.write(img_recv)
 
      #client = storage.Client()
      #bucket = client.get_bucket('fitotron-api.appspot.com')
