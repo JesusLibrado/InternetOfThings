@@ -57,7 +57,7 @@ while True:
      today = today.replace(' ', '_')
      today = today.replace(':', '_')
      today = today.replace('.', '_')
-     print today
+     #print today
 
      #blob = bucket.get_blob('imagen.jpg')
      #urlblob = "mr3_%s.jpg" % today
