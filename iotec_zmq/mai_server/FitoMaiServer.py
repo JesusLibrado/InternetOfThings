@@ -83,5 +83,5 @@ while True:
 
      # Get the feed
 
-        #re = "SUCCESS"
-        socket.send(image_name)
+        re = "SUCCESS"
+        socket.send(re)
