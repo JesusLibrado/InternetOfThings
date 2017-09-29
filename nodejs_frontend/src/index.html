@@ -59,6 +59,7 @@
 		        crossDomain: true,
 		        success: function(response){
 
+		        	console.log(response);
 		        	var message = response;
 		        	var render;
 
@@ -67,7 +68,7 @@
 		        	if(message){
 		        		render = "<p>Id: "+message.device_id+"<p>"+
 		        				"<p>Date: "+message.date+"</p>"+
-		        				"<p>Info: "+message.values+"</p>";
+		        				"<p>Info: "+message.values.temp+"</p>";
 		        	}else
 		        		render = "<p>Information not found</p>";
 

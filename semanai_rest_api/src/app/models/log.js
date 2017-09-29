@@ -6,7 +6,7 @@ var Schema = mongoose.Schema;
 var LogSchema = new Schema({
 	device_id: String,
 	date: String,
-	info: String,
+	info: Object,
 	imageUrl: String
 });
 
