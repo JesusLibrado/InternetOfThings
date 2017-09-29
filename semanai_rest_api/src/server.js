@@ -117,7 +117,7 @@ router.route('/devices/:device_id')
      if (err)
      	res.send(err);
     });
-    
+
     Log.remove({
       device_id: req.params.device_id
     }, function(err, log){
@@ -131,7 +131,7 @@ router.route('/devices/:device_id')
 
 router.route('/logs/:device_id')
   .get(function(req, res){
-    Log.find(req.params.device_id, function(err, log){
+    Log.findOne({device_id:req.params.device_id}, function(err, log){
       if(err) 
         res.send(err);
       res.json(log);
