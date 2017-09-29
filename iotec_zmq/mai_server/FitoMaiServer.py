@@ -40,14 +40,17 @@ while True:
      #r = requests.get("http://fitotron-api.appspot.com/sendSensado", params= pars)
      #data = r.text
 
-        client = MongoClient("mongodb://35.185.213.109:8126")
-        db = client['iotec-jesuslibrado']
+            print("Guardando...")
 
-        result = db.logs.insert_one({
-                    "device_id": pars['device_id'], 
-                    "date": pars['fecha'], 
-                    "info": pars['values'],
-                    "imageUrl": pars['urlImageSup']})
+            client = MongoClient("mongodb://35.185.213.109:8126")
+            db = client['iotec-jesuslibrado']
+
+            result = db.logs.insert_one({
+                        "device_id": pars['device_id'], 
+                        "date": pars['fecha'], 
+                        "info": pars['values'],
+                        "imageUrl": pars['urlImageSup']})
+            print result
 
         print myparams
         re = "Insertion"
