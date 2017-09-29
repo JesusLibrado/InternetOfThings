@@ -45,14 +45,13 @@ while True:
         client = MongoClient("mongodb://35.185.213.109:27017")
         db = client['iotec-jesuslibrado']
 
-        result = db.devices.find()
-
-        #result = db.logs.insert_one({
-                    #"device_id": pars['device_id'], 
-                    #"date": pars['fecha'], 
-                    #"info": pars['values'],
-                    #"imageUrl": pars['urlImageSup']})
-        print result
+        result = db.logs.insert_one({
+                    "device_id": pars['device_id'], 
+                    "date": pars['fecha'], 
+                    "info": pars['values'],
+                    "imageUrl": pars['urlImageSup']})
+        
+        print result.date
 
         print pars
         re = "Insertion"
