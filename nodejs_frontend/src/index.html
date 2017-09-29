@@ -59,20 +59,22 @@
 		        crossDomain: true,
 		        success: function(response){
 
-		        	console.log(response);
 		        	var message = response;
 		        	var render;
 
 		        	$('#'+log_id).css("display","block");
 
 		        	if(message){
+		        		console.log(message.info);
+		        		var info = jQuery.parseJSON(message.info);
+		        		console.log(info);
 		        		render = "<p>Id: "+message.device_id+"<p>"+
 		        				"<p>Date: "+message.date+"</p>"+
 		        				"<p>Url: "+message.imageUrl+"</p>"+
-		        				"<p><h2>Info:</h2></p>"+
-		        				"<p>Temp: "+message.info.temp+"</p>"+
-		        				"<p>Long: "+message.info.LONG+"</p>"+
-		        				"<p>Temp: "+message.info.LAT+"</p>";
+		        				"<p><b>Info:</b></p>"+
+		        				"<p>Temp: "+info.temp+"</p>"+
+		        				"<p>Long: "+info.LONG+"</p>"+
+		        				"<p>Temp: "+info.LAT+"</p>";
 		        	}else
 		        		render = "<p>Information not found</p>";
 

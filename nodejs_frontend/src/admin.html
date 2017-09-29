@@ -209,8 +209,7 @@
              success: function (response) {
                  
               $("#divBears").empty()
-                 response.forEach(function (tweet) 
-                 {
+                 response.forEach(function (tweet){
                
                   var nombre = "<div>" +
                    "<button onclick=\"getOneBearDemo('" + tweet._id + "')\"> GET (one) </button> " +
