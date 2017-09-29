@@ -67,9 +67,12 @@
 
 		        	if(message){
 		        		render = "<p>Id: "+message.device_id+"<p>"+
-		        				"<p>Date: "+message.date+"</p>";
-		        				"<p>Url: "+message.imageUrl+"</p>";
-		        				//"<p>Info: "+message.values.temp+"</p>";
+		        				"<p>Date: "+message.date+"</p>"+
+		        				"<p>Url: "+message.imageUrl+"</p>"+
+		        				"<p><h2>Info:</h2></p>"+
+		        				"<p>Temp: "+message.info.temp+"</p>"+
+		        				"<p>Long: "+message.info.LONG+"</p>"+
+		        				"<p>Temp: "+message.info.LAT+"</p>"+;
 		        	}else
 		        		render = "<p>Information not found</p>";
 
