@@ -136,7 +136,6 @@ router.route('/logs/:device_id')
       if(err) 
         res.send(err);
       res.json(log);
-      console.log(log);
     });
   });
 

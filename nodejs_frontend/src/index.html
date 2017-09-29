@@ -50,7 +50,7 @@
 	function getInfo(log_id){
 		try{
 			jQuery.ajax({
-				url: "http://35.185.213.109:8126/api/logs",
+				url: "http://35.185.213.109:8126/api/logs/"+ log_id,
 				dataType: 'json',
 		        cache: false,
 		        contentType: false,
@@ -58,7 +58,7 @@
 		        type: 'GET',
 		        crossDomain: true,
 		        success: function(response){
-
+		        	console.log(response);
 		        	var message = response;
 
 		        	$('#'+log_id).css("display","block");
