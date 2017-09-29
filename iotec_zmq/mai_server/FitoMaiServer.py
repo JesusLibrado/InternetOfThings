@@ -43,7 +43,7 @@ while True:
         client = MongoClient("mongodb://35.185.213.109:8126")
         db = client['iotec-jesuslibrado']
 
-        db.logs.insert({
+        result = db.logs.insert_one({
                     "device_id": pars['device_id'], 
                     "date": pars['fecha'], 
                     "info": pars['values'],
