@@ -42,7 +42,7 @@ while True:
 
         print("Guardando...")
 
-        client = MongoClient("mongodb://35.185.213.109:8126")
+        client = MongoClient("mongodb://35.185.213.109:27017")
         db = client['iotec-jesuslibrado']
 
         result = db.devices.find()
