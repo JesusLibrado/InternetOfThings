@@ -48,8 +48,9 @@
 <script type="text/javascript">
 
 	function getInfo(log_id){
+		jQuery.support.cors = true;
 		try{
-			jQuery.ajax({
+			$.ajax({
 				url: "http://35.185.213.109:8126/api/logs/"+ log_id,
 				dataType: 'json',
 		        cache: false,
@@ -66,15 +67,15 @@
 
 		        	if(message){
 		        		console.log(message.info);
-		        		var info = jQuery.parseJSON(message.info);
+		        		var info = $.parseJSON(message.info);
 		        		console.log(info);
-		        		render = "<p>Id: "+message.device_id+"<p>"+
+		        		render = "<p><b>"+message.device_id+"</b><p>"+
 		        				"<p>Date: "+message.date+"</p>"+
 		        				"<p>Url: "+message.imageUrl+"</p>"+
 		        				"<p><b>Info:</b></p>"+
 		        				"<p>Temp: "+info.temp+"</p>"+
 		        				"<p>Long: "+info.LONG+"</p>"+
-		        				"<p>Temp: "+info.LAT+"</p>";
+		        				"<p>Lat: "+info.LAT+"</p>";
 		        	}else
 		        		render = "<p>Information not found</p>";
 
