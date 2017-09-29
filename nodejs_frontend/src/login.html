@@ -36,12 +36,13 @@ function loginDemo()
          },
          dataType: "json",
          success: function (response) {
-              alert(response.message);
+              //alert(response.message);
               if(response.token){
                 sessionStorage.token = response.token;
                 alert ("token generado: " + sessionStorage.token);
                 window.location = "/admin";
-              }
+              }else
+                alert("Sorry, not token for you");
          },
          error: function (error) {
               alert(" error : " + error)

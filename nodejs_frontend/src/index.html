@@ -66,16 +66,17 @@ function getData()
         success: function(response) {
 	  	  tweets = response;
           tweets.forEach(function (device){
+
           	 var split = device.location.split(" ");
           	 var location = "";
           	 for(var i = 0; i<split.length; i++)
           	 	location += split[i]+"+";
-          	 console.log(location);
+
              var render = "<div class='col-md-3 col-sm-3 wow fadeInUp' data-wow-delay='0.2s'> " +
-                        "<img src='" + "images/team-img1.jpg" + "'" +
-                        " class='img-responsive img-circle' alt='team img' heigth='150' width='150'" +
+                        "<img src='./images/"+device._id+".jpg'" +
+                        " class='img-responsive img-circle' alt='Imgen not available' heigth='150' width='150'" +
                         " >" +
-                        " <div class='section-title wow bounceIn'> " +
+                        "<div class='section-title wow bounceIn'> " +
                         "<h3>" + device.name + "</h3>" +
                         "<h5>" + device.code + "</h5>" +
                         "<p>" + device.description + "</p>" +
