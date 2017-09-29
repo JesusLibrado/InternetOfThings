@@ -73,7 +73,7 @@ function getData()
           	 	location += split[i]+"+";
 
              var render = "<div class='col-md-3 col-sm-3 wow fadeInUp' data-wow-delay='0.2s'> " +
-                        "<img src='./images/"+device._id+".jpg'" +
+                        "<img src='images/"+device._id+".jpg'" +
                         " class='img-responsive img-circle' alt='Imgen not available' heigth='150' width='150'" +
                         " >" +
                         "<div class='section-title wow bounceIn'> " +
@@ -81,6 +81,7 @@ function getData()
                         "<h5>" + device.code + "</h5>" +
                         "<p>" + device.description + "</p>" +
                         "<a target='_blank' href=" + "https://www.google.com.mx/maps/place/"+location+">See location  </a>" +
+                        "<button onclick='\"getInfo('"+device._id+"')\"'>More...</button>"+
                         "<p>" + device.date + "</p>"+
                         "</div>" +
                         "</div>"
@@ -94,6 +95,10 @@ function getData()
 	catch(e){
       alert("error : " +  e);
     }
+}
+
+function getInfo(log_id){
+	alert(log_id);
 }
 
 

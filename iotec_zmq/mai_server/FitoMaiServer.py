@@ -24,12 +24,14 @@ if __name__ == '__main__':
 while True:
 
     message = socket.recv()
+
     if message.startswith('{'):
+
         myparams = json.loads(message)
 
         pars = {
             "device_id": myparams['code_device'],
-            "id_planta": myparams['id_planta'],
+            #"id_planta": myparams['id_planta'],
             "fecha": myparams['fecha'],
             "values": json.dumps(myparams['values']),  # users=[{"email_hash": "fh7834uifre8houi3f"}, ... ]
             "urlImageLat": myparams['urlImageLat'],
@@ -37,6 +39,16 @@ while True:
         }
      #r = requests.get("http://fitotron-api.appspot.com/sendSensado", params= pars)
      #data = r.text
+
+        client = MongoClient("mongodb://35.185.213.109:8126")
+        db = client['iotec-jesuslibrado']
+
+        db.logs.insert({
+                    "device_id":pars.device_id, 
+                    "date": pars.fecha, 
+                    "info": pars.values,
+                    "imageUrl": pars.urlImageSup})
+
         print myparams
         re = "Insertion"
  
@@ -45,9 +57,6 @@ while True:
         image_name = pars['device_id']+'.jpg'
         img_result = open('../../nodejs_frontend/src/images/'+image_name, 'w')
         img_result.write(img_recv)
-
-
-
 
     else:
         img_recv = (message)
@@ -74,5 +83,5 @@ while True:
 
      # Get the feed
 
-        re = "SUCCESS"
-        socket.send(re)
+        #re = "SUCCESS"
+        socket.send(image_name)

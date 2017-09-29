@@ -5,6 +5,7 @@
 var mongoose = require('mongoose'); // driver de Mongo
 mongoose.connect('mongodb://35.185.213.109:27017/iotec-jesuslibrado');
 var Device = require('./app/models/device');
+var Log = require('./app/models/log');
 
 
 var express = require('express');
@@ -52,7 +53,6 @@ router.get('/', function(req, res) {
 // more routes for our API will happen here
 router.route('/devices')
 
-  // http://localhost:8081/api/devices
  .post(function (req, res) {
 
    	var device = new Device();
@@ -69,7 +69,6 @@ router.route('/devices')
    	});
  })
 
- // http://localhost:8081/api/devices)
  .get(function (req, res) {
 
    	Device.find(function(err, devices){
@@ -79,11 +78,7 @@ router.route('/devices')
    	});
  });
 
-// on routes that end in /devices/:device_id
 router.route('/devices/:device_id')
- // get the device with that id 
- // accessed at GET 
- // http://localhost:8081/api/devices/:device_id
 
  .get(function(req, res){
    	Device.findById(req.params.device_id, function(err, device){
@@ -93,8 +88,6 @@ router.route('/devices/:device_id')
 
    	});
   })
-
- // http://localhost:8126/api/bears/:bear_id
 
  .put(function (req, res) {
 
@@ -116,7 +109,6 @@ router.route('/devices/:device_id')
    	});
   })
 
- // http://localhost:8081/api/devices/:device_id
  .delete(function (req, res) {
 
      Device.remove({
@@ -129,9 +121,15 @@ router.route('/devices/:device_id')
 
  });
 
- 
+router.route('/logs/:device_id')
+  .get(function(req, res){
+    Log.findById(req.params.device_id, function(err, log){
+      if(err) return err;
+      res.json(log);
+    });
+  });
 
-// register our routes
+
 app.use('/api', router);
 //app.use(require('cors')());
 
