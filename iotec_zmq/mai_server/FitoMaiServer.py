@@ -44,10 +44,10 @@ while True:
         db = client['iotec-jesuslibrado']
 
         db.logs.insert({
-                    "device_id":pars.device_id, 
-                    "date": pars.fecha, 
-                    "info": pars.values,
-                    "imageUrl": pars.urlImageSup})
+                    "device_id": pars['device_id'], 
+                    "date": pars['fecha'], 
+                    "info": pars['values'],
+                    "imageUrl": pars['urlImageSup']})
 
         print myparams
         re = "Insertion"

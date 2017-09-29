@@ -129,6 +129,14 @@ router.route('/logs/:device_id')
     });
   });
 
+router.route('/logs')
+  .get(function(req, res){
+    Log.find(function(err, log){
+      if(err) return err;
+      res.json(log);
+    });
+  });
+
 
 app.use('/api', router);
 //app.use(require('cors')());
