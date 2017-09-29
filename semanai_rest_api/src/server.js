@@ -111,20 +111,29 @@ router.route('/devices/:device_id')
 
  .delete(function (req, res) {
 
-     Device.remove({
-     	_id : req.params.device_id
-     }, function (err, device) {
-     	if (err)
-     		res.send(err);
-     	res.json({message: 'Device deleted !'});
-     });
+    Device.remove({
+     _id : req.params.device_id
+    }, function (err, device) {
+     if (err)
+     	res.send(err);
+    });
+    
+    Log.remove({
+      device_id: req.params.device_id
+    }, function(err, log){
+      if(err) 
+        res.send(err);
+    });
+
+    res.json({message: 'Device deleted !'});
 
  });
 
 router.route('/logs/:device_id')
   .get(function(req, res){
-    Log.findById(req.params.device_id, function(err, log){
-      if(err) return err;
+    Log.find(req.params.device_id, function(err, log){
+      if(err) 
+        res.send(err);
       res.json(log);
     });
   });
@@ -132,7 +141,7 @@ router.route('/logs/:device_id')
 router.route('/logs')
   .get(function(req, res){
     Log.find(function(err, log){
-      if(err) return err;
+      if(err) res.send(err);
       res.json(log);
     });
   });

@@ -50,8 +50,6 @@ while True:
                     "date": pars['fecha'], 
                     "info": pars['values'],
                     "imageUrl": pars['urlImageSup']})
-        
-        print result.date
 
         print pars
         re = "Insertion"
