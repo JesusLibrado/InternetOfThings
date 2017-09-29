@@ -58,15 +58,16 @@
 		        type: 'GET',
 		        crossDomain: true,
 		        success: function(response){
+
 		        	console.log(response);
 		        	var message = response;
 
 		        	$('#'+log_id).css("display","block");
 
-		        	if(message._id){
-		        		$('#'+log_id).html(message.device_id);
+		        	if(message){
+		        		$('#'+log_id).html("<p>Id: "+message.device_id+"</p>");
 		        	}else
-		        		$('#'+log_id).html("Information not found");
+		        		$('#'+log_id).html("<p>Information not found</p>");
 
 		        },error: function(error){
 		        	alert(error);
@@ -111,7 +112,7 @@
 	                        "<p>" + device.description + "</p>" +
 	                        "<a target='_blank' href=" + "https://www.google.com.mx/maps/place/"+location+">See location  </a>" +
 	                        "<p>" + device.date + "</p>"+
-	                        "<a onclick=\"getInfo('"+device._id+"')\">More...</a>"+
+	                        "<a href="" onclick=\"getInfo('"+device._id+"')\">More...</a>"+
 	                        "<div id='"+device._id+"' style='display':'none';></div>"
 	                        "</div>" +
 	                        "</div>"
